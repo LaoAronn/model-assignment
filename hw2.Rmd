@@ -1,0 +1,61 @@
+---
+title: 'STAT 300: Written Assignment 2'
+author: 'Aronn Grant Laurel (21232475)'
+date: "April, 2025"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#if you do not have the package, type install.packages("name_of_the_package")
+library(knitr)
+library(ggplot2)
+```
+
+### Question 1
+
+(a) 
+
+```{r, echo=TRUE}
+# this is where your R code goes
+```
+
+
+(b)
+
+```{r, echo=TRUE}
+# this is where your R code goes
+```
+
+
+(c)
+
+```{r, echo=TRUE}
+# this is where your R code goes
+```
+
+
+### Question 2
+
+(a) 
+
+```{r, echo=TRUE}
+# this is where your R code goes
+```
+
+
+(b)
+
+```{r, echo=TRUE}
+# this is where your R code goes
+```
+
+
+(c)
+
+```{r, echo=TRUE}
+# this is where your R code goes
+```
+
