@@ -51,7 +51,7 @@ ggplot(student, aes(x = StudyHours, y = ExamScore, color = PreviousGPA)) +
   theme_minimal()
 ```
 Overall, we can observe a slight positive correlation between exam scores
-and study hours. Futhermore, we can see that higher GPA holders (3.5 - 4.0) tend to
+and study hours. Furthermore, we can see that higher GPA holders (3.5 - 4.0) tend to
 cluster at the upper right of the graph with high exam score and study hours. 
 On the other hand, lower GPA holders (3.0 - 0) tend to be at the bottom right
 of the scatterplot whose students have lower exam scores and study hours.
@@ -61,29 +61,52 @@ Therefore, we can say that students who have higher exam scores.
 (b)
 
 ```{r, echo=TRUE}
-# this is where your R code goes
+model <- lm(ExamScore ~ StudyHours + PreviousGPA + TrainingMethod, data = student)
+summary(model)
+
 ```
+
+$\ Exam Score = 46.3115 + 1.0688*(Study Hours) + 5.3071*(Previous GPA) - 2.8668*(Online Course) - 6.6728*(Self-Study) + epsilon$
+
+For Coefficient: Study Hours
+
+
+For Coefficient: PreviousGPA
+
+
+For Coefficient: TrainingMethod - Online Course
+
+
+For Coefficient: TrainingMethod - Self Study
 
 
 (c)
+Given:
+Study Hours per week = 8
+Previous GPA = 3.8
+Online Course = 1
+Self Study = 0
 
 ```{r, echo=TRUE}
-# this is where your R code goes
+46.3115 + 1.0688*(8) + 5.3071*(3.8) - 2.8668*(1) - 6.6728*(0)
+```
+Therefore, this student's expected exam score is ~ 72.16
+
+(d)
+
+```{r, echo=TRUE}
+
 ```
 
+(e)
+(f)
 
 ### Question 2
 
 (a) 
 
-```{r, echo=TRUE}
-# this is where your R code goes
-```
-
 
 (b)
-
-
 
 
 (c)
@@ -92,3 +115,21 @@ Therefore, we can say that students who have higher exam scores.
 # this is where your R code goes
 ```
 
+(d)
+(e)
+(f)
+
+### Question 3
+(a)
+(b)
+(c)
+(d)
+(e)
+
+### Question 4
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
