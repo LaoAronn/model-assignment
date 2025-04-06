@@ -61,6 +61,7 @@ Therefore, we can say that students who have higher exam scores.
 (b)
 
 ```{r, echo=TRUE}
+student$TrainingMethod <- as.factor(student$TrainingMethod)
 model <- lm(ExamScore ~ StudyHours + PreviousGPA + TrainingMethod, data = student)
 summary(model)
 
@@ -69,16 +70,20 @@ summary(model)
 $\ Exam Score = 46.3115 + 1.0688*(Study Hours) + 5.3071*(Previous GPA) - 2.8668*(Online Course) - 6.6728*(Self-Study) + epsilon$
 
 For Coefficient: Study Hours
-
+For an increase of 1 studying hour per week, we expect an increase in exam 
+score by approximately 1.06 points
 
 For Coefficient: PreviousGPA
-
+For an increase of 1 Previous GPA point, we expect an increase in exam 
+score by approximately 5.31 points
 
 For Coefficient: TrainingMethod - Online Course
-
+For students taking Online Course, they average 2.87 points lower on the exam
+compared to those who attended In-person classes
 
 For Coefficient: TrainingMethod - Self Study
-
+For students who Self Studied, they average 6.67 points lower on the exam
+compared to those who attended In-person classes
 
 (c)
 Given:
@@ -93,12 +98,39 @@ Self Study = 0
 Therefore, this student's expected exam score is ~ 72.16
 
 (d)
+Null Hypothesis
+The mean exam scores are equal across all methods
+$\  H_0 : \mu_{Self Study} = \mu_{Online class} = \mu_{In Person}$
+
+Alternative Hypothesis
+At least one training method has a different mean exam score
 
 ```{r, echo=TRUE}
+student$TrainingMethod <- as.factor(student$TrainingMethod)
+anova_model <- aov(ExamScore ~ TrainingMethod, data = student)
+summary(anova_model)
 
 ```
+As we observe a small p-value 1.16e-10 for our categorical variable - Training
+Method, we can reject the null hypothesis at 0.05 significance level. Therefore,
+training methods is significant on exam scores.
 
 (e)
+```{r, echo=TRUE, fig.height = 7}
+par(mfrow = c(2, 2))
+plot(model)
+
+```
+Residual vs Fitted Plot: we can see no patterns which suggests Linearity  
+and non-funneling and constant variance which suggests Homoscedasticity.
+
+Normal Q-Q plot: We can see that our points roughly follows the 'normal'
+diagonal line but with heavier tails and skewed, 
+thus suggesting that the residuals may not be normally distributed (CLT Theorem).
+
+
+
+
 (f)
 
 ### Question 2
