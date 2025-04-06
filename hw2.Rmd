@@ -129,9 +129,25 @@ diagonal line but with heavier tails and skewed,
 thus suggesting that the residuals may not be normally distributed (CLT Theorem).
 
 
-
-
 (f)
+```{r, echo=TRUE}
+int_model <- lm(ExamScore ~ StudyHours * PreviousGPA + TrainingMethod, data = student)
+summary(int_model)
+
+summary(model)
+
+anova(model, int_model)
+```
+Looking at the p-values for the interaction term, we can see that it is a
+higher pvalue at 0.3718 which is statistically insignificant and that
+adding the interaction term may not be necessary. 
+
+Furthermore, we can see that the Adjusted R-Squared between the two models
+are very similar with the interaction model being higher by 0.0003.
+
+We can also use ANOVA for our nested model comparison, and we can observe a high
+p-value thus suggesting that the interaction model may be a more insignificant 
+explanatory variable. 
 
 ### Question 2
 
