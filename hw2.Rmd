@@ -156,7 +156,10 @@ interaction model may be a more insignificant explanatory variable.
 data <- read.csv("data.csv")
 
 # Scatterplot Matrix
-ggpairs(data)
+ggpairs(data,
+        diag = list(continuous = "barDiag"),
+        lower = list(continuous = "points"),
+        upper = list(continuous = "cor"))
 
 ```
 We can observe a strong correlation between Temperature and Concentration with 0.976
@@ -175,15 +178,42 @@ The model equation is: $/ Concentration = 0.3701 + 3.6394(Temp) - 2.4722(pH) $
 
 Coefficient Interpretations:
 Temperature: For an increase in 1 Degree Celcius, we expect an increase in
-pollutant concentration by 3.6394.
+pollutant concentration by 3.6394 units
 
 pH: For an increase in 1 pH Level, we expect a decrease in pollutant concentration
-by 2.4722.
+by 2.4722 units
 
-(c)
-
+(c) A linear model seems appropriate because the scatter plot between Temperature
+and Concentration displays a strong positive linear pattern. Our histograms
+also do not have any obvious outliers that would suggest a more complex model.
+Also looking into the p-value and Adjusted R-squared of our linear model,
+I believe that it is adequate in capturing the relationship.
 
 (d)
+Since we have already fitted a multiple linear regression, we will extend
+the model by applying an interaction term between Temperature and pH :
+
+```{r, echo=TRUE}
+model_d <- lm(Concentration ~ Temp * pH, data = data)
+
+summary(model_d)
+```
+The model equation is: $/ Concentration = 2.93433 + 3.45312(Temp) - 2.82304(pH) + 0.02532 (Temp)(pH) $
+
+Coefficient Interpretations:
+Temperature: For an increase in 1 Degree Celcius, we expect an increase in
+pollutant concentration by 3.45312 units
+
+pH: For an increase in 1 pH Level, we expect a decrease in pollutant concentration
+by 2.82304 units
+
+Interaction Term: For an increase by 1 unit in both Temperature and pH Level, 
+we expect an increase in pollutant concentration by 0.02532 units
+
+Given the interaction's p-value to be quite high with 0.85422, that suggests that
+the interaction term is not statistically significant at confidence level 5%. 
+This suggests that including the interaction may not meaningfully improve the model.
+
 (e)
 (f)
 
