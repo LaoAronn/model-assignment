@@ -190,7 +190,7 @@ Also looking into the p-value and Adjusted R-squared of our linear model,
 I believe that it is adequate in capturing the relationship.
 
 (d)
-Since we have already fitted a multiple linear regression, we will extend
+Since we have already fitted an Additive linear regression, we will extend
 the model by applying an interaction term between Temperature and pH :
 
 ```{r, echo=TRUE}
@@ -215,7 +215,32 @@ the interaction term is not statistically significant at confidence level 5%.
 This suggests that including the interaction may not meaningfully improve the model.
 
 (e)
+```{r, echo=TRUE}
+# R squared
+summary(model_b)$r.squared
+summary(model_d)$r.squared
+
+# Adjusted R squared
+summary(model_b)$adj.r.squared
+summary(model_d)$adj.r.squared
+```
+In terms of R squared, both models explained about 95.55% of the variation with
+the interaction model explaining better than our additive model by slightly more
+with a difference of 3.29e-05.
+
+The addition of an interaction term in Model D did not provide any significant improvement 
+in terms of model performance with a slightly lower adjusted R squared value by 0.0009724
+compared to the additive model. Also given that the p-value of the interaction term
+was not statistically significant, Model B (additive)  should be the preferred model.
+
 (f)
+Using the plot() function that includes the residual plot :
+```{r, echo=TRUE}
+plot(model_b, which = 1)
+
+plot(model_d, which = 1)
+```
+
 
 ### Question 3
 (a)
