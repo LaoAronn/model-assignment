@@ -151,9 +151,19 @@ lower AIC value for our linear model without interaction, thus suggesting that t
 interaction model may be a more insignificant explanatory variable. 
 
 ### Question 2
-
 (a) 
+```{r, echo=TRUE}
+data <- read.csv("data.csv")
 
+# Scatterplot Matrix
+ggpairs(data)
+
+```
+We can observe a strong correlation between Temperature and Concentration with 0.976
+while the other relationship between other variables seems weaker with less than 0.1.
+Looking at the scatter plots, we can observe a linear positive increasing pattern between
+Temperature and Concentration while the other scatter plots seem more Non-linear without 
+any obvious pattern.
 
 (b)
 
@@ -162,6 +172,7 @@ interaction model may be a more insignificant explanatory variable.
 
 ```{r, echo=TRUE}
 # this is where your R code goes
+data <- read.csv("dat.csv")
 ```
 
 (d)
