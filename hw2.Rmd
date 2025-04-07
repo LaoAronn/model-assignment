@@ -166,14 +166,22 @@ Temperature and Concentration while the other scatter plots seem more Non-linear
 any obvious pattern.
 
 (b)
+```{r, echo=TRUE}
+model_b <- lm(Concentration ~ Temp + pH, data = data)
 
+summary(model_b)
+```
+The model equation is: $/ Concentration = 0.3701 + 3.6394(Temp) - 2.4722(pH) $
+
+Coefficient Interpretations:
+Temperature: For an increase in 1 Degree Celcius, we expect an increase in
+pollutant concentration by 3.6394.
+
+pH: For an increase in 1 pH Level, we expect a decrease in pollutant concentration
+by 2.4722.
 
 (c)
 
-```{r, echo=TRUE}
-# this is where your R code goes
-data <- read.csv("dat.csv")
-```
 
 (d)
 (e)
