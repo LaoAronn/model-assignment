@@ -271,6 +271,18 @@ effect. The plot shows that the average foraging success is higher for morning
 offshore foraging and evening coastal foraging.
 
 (b)
+Main Effect (Habitats)
+$/ H_0 $ : There is no difference in mean foraging success between coastal and offshore habitats.
+$/ H_a $ : There is a difference in mean foraging success between coastal and offshore habitats.
+
+Main Effect (Time of Day)
+$/ H_0 $ : There is no difference in mean foraging success between morning and evening.
+$/ H_a $ : There is a difference in mean foraging success between morning and evening.
+
+Interaction Effect
+$/ H_0 $ : There is no interaction between habitat type and time of day
+$/ H_a $ : There is an interaction between habitat type and time of day
+
 (c)
 (d)
 (e)
