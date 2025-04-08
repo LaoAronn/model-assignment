@@ -382,5 +382,22 @@ There is a 95% chance that the true population mean lies within 289.2667 and
 470.8187.
 
 (d)
+Null Hypothesis: The Mean Caffeine Content = 300mg
+Alternative Hypothesis: The Mean Caffeine Content != 300 mg
+
+```{r, echo=TRUE}
+observed_mean <- mean(coffee)
+
+# Using our previous question's bootstrapping 
+observed_diff <- abs(observed_mean - 300)
+extreme_count <- sum( abs(bootstrap_means - 300) >= observed_diff )
+p_value <- extreme_count / 1000
+p_value
+```
+
+Since our p-value is at 0.5, we fail to reject the null hypothesis at 5% 
+significance level. Hence, there is insufficient evidence to conclude that
+the mean caffeine content differs from 300 mg.
+
 (e)
 (f)
