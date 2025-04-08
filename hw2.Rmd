@@ -240,10 +240,36 @@ plot(model_b, which = 1)
 
 plot(model_d, which = 1)
 ```
-
+For both additive and multiplicative model, we can observe a violation of 
+homoscedasticity because the variance is not constant throughout and shows
+a pattern which also violates the linearity-assumption 
+as we can see a visible pattern (curve pattern).
 
 ### Question 3
 (a)
+```{r, echo=TRUE}
+# Creating data frame
+habitat <- c("Coastal", "Coastal", "Offshore", "Offshore")
+time <- c("Morning", "Evening", "Morning", "Evening")
+mean_success <- c(5.2, 7.1, 6.5, 4.8)
+
+forage_df <- data.frame(Habitat = habitat, Time = time, MeanSuccess = mean_success)
+forage_df
+
+# Create interaction plot
+interaction.plot(x.factor = forage_df$Habitat, 
+                 trace.factor = forage_df$Time, 
+                 response = forage_df$MeanSuccess, 
+                 col = c("blue", "red"), 
+                 main = "Interaction Plot: Habitat Type & Time of Day",
+                 xlab = "Habitat Type",
+                 ylab = "Mean Foraging Success")
+
+```
+The cross lines in our interaction plot suggests that there exist an interaction
+effect. The plot shows that the average foraging success is higher for morning
+offshore foraging and evening coastal foraging.
+
 (b)
 (c)
 (d)
