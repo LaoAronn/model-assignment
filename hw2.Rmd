@@ -395,9 +395,20 @@ p_value <- extreme_count / 1000
 p_value
 ```
 
-Since our p-value is at 0.5, we fail to reject the null hypothesis at 5% 
+Since our p-value is at 0.5, we reject the null hypothesis at 5% 
 significance level. Hence, there is insufficient evidence to conclude that
 the mean caffeine content differs from 300 mg.
 
 (e)
+```{r, echo=TRUE}
+t_test_result <- t.test(coffee, mu = 300)
+t_test_result
+```
+Using the one-sample t-test, we are assuming that the data follows a normal
+distribution and comparing the observed sample mean to the null hypothesis 
+value. Although our bootstrapping test does not have much assumptions, our conclusion
+from our p-value does not differ with the one sample t-test where we reject
+the null hypothesis.
+
 (f)
+
