@@ -256,14 +256,16 @@ mean_success <- c(5.2, 7.1, 6.5, 4.8)
 forage_df <- data.frame(Habitat = habitat, Time = time, MeanSuccess = mean_success)
 forage_df
 
-# Create interaction plot
+# Create interaction plot (From Worksheet 17)
 interaction.plot(x.factor = forage_df$Habitat, 
                  trace.factor = forage_df$Time, 
                  response = forage_df$MeanSuccess, 
-                 col = c("blue", "red"), 
+                 type = "b",
                  main = "Interaction Plot: Habitat Type & Time of Day",
                  xlab = "Habitat Type",
-                 ylab = "Mean Foraging Success")
+                 ylab = "Mean Foraging Success",
+                 trace.label = "Interactive labs",
+                 pch=c(1,19), col = c("red", "blue"))
 
 ```
 The cross lines in our interaction plot suggests that there exist an interaction
@@ -284,13 +286,93 @@ $/ H_0 $ : There is no interaction between habitat type and time of day
 $/ H_a $ : There is an interaction between habitat type and time of day
 
 (c)
+
+Interaction Term (7.1 - 5.2) - (4.8 - 6.5) = 1.9 + 1.7 = 3.6
+ 
 (d)
+
+
+
+```{r, echo=TRUE}
+# Sum of Squares
+SS_habitat <- 10.3
+SS_time <- 8.7
+SS_interaction <- 12.5
+SS_total <- 46.7
+SS_error <- SS_total - SS_habitat - SS_time - SS_interaction
+
+# Degree of Freedom
+df_habitat = df_time = df_interaction = 1
+df_error = 36
+df_total = df_habitat + df_time + df_interaction + df_error
+
+# Mean Square 
+MS_habitat <- SS_habitat / df_habitat
+MS_time <- SS_time / df_time
+MS_interaction <- SS_interaction / df_interaction
+MS_error <- SS_error / df_error
+
+# F value
+F_habitat <- MS_habitat / MS_error
+F_time <- MS_time / MS_error
+F_interaction <- MS_interaction / MS_error
+
+anova_table <- data.frame(
+  Source = c("Habitat", "Time", "Interaction", "Error", "Total"),
+  SS = c(SS_habitat, SS_time, SS_interaction, SS_error, SS_total),
+  df = c(df_habitat, df_time, df_interaction, df_error, df_total),
+  MS = c(MS_habitat, MS_time, MS_interaction, MS_error, NA),
+  F = c(F_habitat, F_time, F_interaction, NA, NA)
+)
+anova_table
+
+```
+
 (e)
+```{r, echo=TRUE}
+qf(0.95, df1 = 1, df2 = 36)
+```
+Since all F-values (Habitat 24, Time 20, Interaction 29) are greater than 4.11, 
+so all effects are statistically significant at the 0.05 level.
+
 
 ### Question 4
 (a)
+```{r, echo=TRUE}
+set.seed(123) 
+coffee <- c(564.4, 498.2, 259.2, 303.3, 299.5, 307.2)
+
+bootstrap_means <- numeric(1000)
+
+# Bootstrapping
+for (i in 1:1000) {
+  bootstrap_sample <- sample(coffee, size = 6, replace = TRUE)
+  bootstrap_means[i] <- mean(bootstrap_sample) # Compute the mean of the bootstrap sample
+}
+head(bootstrap_means)
+
+# Sampling Distribution
+hist(bootstrap_means,
+     main = "Empirical Bootstrap Distribution of Mean", 
+     xlab = "Bootstrap Sample Mean",
+     breaks = 30)
+
+```
+
 (b)
+```{r, echo=TRUE}
+sd(bootstrap_means)
+```
+The bootstrap estimate's standard deviation tell us the variability of the sample mean 
+across the 1000 bootstrap samples. It is significant to tell if our sample mean
+is relatively stable (smaller sd) and if it is consistent across different samples
+from the population.
+
 (c)
+```{r, echo=TRUE}
+sd(bootstrap_means)
+```
+
 (d)
 (e)
 (f)
