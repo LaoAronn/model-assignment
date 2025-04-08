@@ -411,4 +411,14 @@ from our p-value does not differ with the one sample t-test where we reject
 the null hypothesis.
 
 (f)
+As the sample size increases, the bootstrap p-value will likely become more precise
+because our interval of bootstrap sample means will have lower variability.  
+
+Given that the Standard Error (SE) = s / sqrt(n), increasing the sample size n
+will decrease the Standard Error. Hence, our test statistic would be larger
+as our Smaller SE would produce a more precise estimate. This would also result
+in a smaller p-value for the t-test which would make us more likely to fail to 
+reject the Null Hypothesis. Furthermore, a larger sample size allows us to 
+apply Central Limit Theorem, where our sampling distribution of the sample mean 
+approaches a normal distribution. 
 
