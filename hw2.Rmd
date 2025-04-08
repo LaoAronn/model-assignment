@@ -370,8 +370,16 @@ from the population.
 
 (c)
 ```{r, echo=TRUE}
-sd(bootstrap_means)
+sorted_means <- sort(bootstrap_means)
+
+lower_bound <- quantile(sorted_means, 0.025)
+lower_bound
+
+upper_bound <- quantile(sorted_means, 0.975)
+upper_bound
 ```
+There is a 95% chance that the true population mean lies within 289.2667 and
+470.8187.
 
 (d)
 (e)
